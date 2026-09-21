@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A 40-week competency-based path from full-stack engineer to SAP AI solution consultant." />
+  <title>SAP AI Competency Path</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #18211e;
+      --muted: #617069;
+      --paper: #f4f1e9;
+      --card: #fffdf8;
+      --line: rgba(24, 33, 30, .15);
+      --green: #1f6650;
+      --deep: #123d31;
+      --orange: #d9683c;
+      --yellow: #e9c35b;
+      --shadow: 0 14px 34px rgba(25, 42, 35, .07);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 4% 2%, rgba(233,195,91,.22), transparent 28rem),
+        radial-gradient(circle at 100% 18%, rgba(31,102,80,.12), transparent 31rem),
+        var(--paper);
+      font: 400 16px/1.55 "Source Sans 3", sans-serif;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.09'/%3E%3C/svg%3E");
+      z-index: -1;
+    }
+    a { color: inherit; }
+    .shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+    .mono { font: 500 .72rem/1.2 "DM Mono", monospace; letter-spacing: .08em; text-transform: uppercase; }
+    header { padding: 26px 0 18px; border-bottom: 1px solid var(--line); }
+    .topline { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .brand { color: var(--deep); }
+    .status { color: var(--muted); }
+    .hero { padding: 58px 0 56px; display: grid; grid-template-columns: 1.25fr .75fr; gap: 70px; align-items: end; }
+    .kicker { margin-bottom: 15px; color: var(--orange); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 760px; margin-bottom: 22px; font: 700 clamp(3rem, 7vw, 6.2rem)/.9 "Newsreader", serif; letter-spacing: -.065em; }
+    .dek { max-width: 650px; margin-bottom: 0; color: var(--muted); font-size: clamp(1.05rem, 1.7vw, 1.28rem); line-height: 1.4; }
+    .principle { padding: 25px 26px; color: #f9f7ef; background: var(--deep); box-shadow: var(--shadow); transform: rotate(1deg); }
+    .principle strong { display: block; margin-bottom: 8px; font: 600 1.35rem/1.05 "Newsreader", serif; }
+    .principle p { margin: 0; color: rgba(249,247,239,.75); font-size: .96rem; }
+    .facts { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .fact { padding: 18px 16px 20px; border-right: 1px solid var(--line); }
+    .fact:last-child { border-right: 0; }
+    .fact strong { display: block; margin-bottom: 4px; color: var(--green); font: 600 1.65rem/1 "Newsreader", serif; }
+    .fact span { color: var(--muted); font-size: .84rem; }
+    .workspace { display: grid; grid-template-columns: 238px minmax(0, 1fr); gap: 48px; align-items: start; margin-top: 54px; }
+    aside { position: sticky; top: 18px; }
+    .rail-card { padding: 19px; border: 1px solid var(--line); background: rgba(255,253,248,.62); }
+    .rail-card + .rail-card { margin-top: 14px; }
+    .rail-title { margin-bottom: 14px; color: var(--deep); }
+    .progress { height: 7px; margin: 10px 0 8px; overflow: hidden; background: #e5dfd1; }
+    .progress > i { display: block; width: 0; height: 100%; background: var(--orange); transition: width .25s ease; }
+    .progress-meta { display: flex; justify-content: space-between; color: var(--muted); font-size: .78rem; }
+    .jump { display: grid; gap: 9px; margin: 0; padding: 0; list-style: none; }
+    .jump a { display: flex; gap: 9px; text-decoration: none; color: var(--muted); font-size: .88rem; }
+    .jump a:hover { color: var(--orange); }
+    .jump b { color: var(--orange); font: 500 .7rem "DM Mono", monospace; }
+    .section-head { padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+    .section-head h2 { margin-bottom: 6px; font: 600 clamp(2rem, 4vw, 3.35rem)/1 "Newsreader", serif; letter-spacing: -.04em; }
+    .section-head p { max-width: 630px; margin-bottom: 0; color: var(--muted); }
+    .roadmap { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin: 20px 0 42px; }
+    .roadmap a { min-height: 86px; padding: 12px; border-top: 4px solid var(--accent); color: var(--ink); background: rgba(255,253,248,.72); text-decoration: none; }
+    .roadmap a:hover { background: var(--card); transform: translateY(-2px); }
+    .roadmap small { display: block; margin-bottom: 7px; color: var(--muted); font: 500 .66rem "DM Mono", monospace; }
+    .roadmap span { display: block; font-weight: 600; font-size: .84rem; line-height: 1.12; }
+    .stages { display: grid; gap: 16px; }
+    .stage { overflow: hidden; border: 1px solid var(--line); background: var(--card); box-shadow: 0 8px 22px rgba(25,42,35,.04); }
+    .stage::before { content: ""; display: block; height: 4px; background: var(--accent); }
+    .stage-inner { padding: 23px 25px 24px; }
+    .stage-top { display: grid; grid-template-columns: 68px minmax(0, 1fr) auto; gap: 20px; align-items: start; }
+    .stage-num { color: var(--accent); font: 600 2.7rem/.9 "Newsreader", serif; letter-spacing: -.07em; }
+    .stage-num small { display: block; margin-top: 9px; color: var(--muted); font: 500 .61rem "DM Mono", monospace; letter-spacing: .06em; text-transform: uppercase; }
+    .stage h3 { margin: 1px 0 4px; font: 600 clamp(1.35rem, 2.5vw, 1.95rem)/1.05 "Newsreader", serif; letter-spacing: -.025em; }
+    .weeks { margin: 0; color: var(--muted); font: 500 .7rem "DM Mono", monospace; text-transform: uppercase; }
+    .stage-body { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 18px 0 0 88px; }
+    .stage-body h4 { margin: 0 0 6px; color: var(--deep); font: 600 .72rem "DM Mono", monospace; letter-spacing: .07em; text-transform: uppercase; }
+    .stage-body p { margin-bottom: 12px; color: var(--muted); font-size: .93rem; }
+    .stage-body ul { margin: 0; padding-left: 18px; color: var(--muted); font-size: .9rem; }
+    .stage-body li + li { margin-top: 4px; }
+    .gate { display: flex; gap: 10px; align-items: flex-start; margin: 20px 0 0 88px; padding-top: 15px; border-top: 1px dashed var(--line); color: var(--ink); font-size: .9rem; }
+    .gate input { width: 18px; height: 18px; margin: 1px 0 0; accent-color: var(--orange); flex: 0 0 auto; }
+    .resource-links { display: flex; flex-wrap: wrap; gap: 7px; margin: 18px 0 0 88px; }
+    .resource-link { display: inline-flex; align-items: center; gap: 5px; padding: 6px 9px; border: 1px solid var(--line); color: var(--green); background: #f5f1e8; text-decoration: none; font: 500 .68rem "DM Mono", monospace; letter-spacing: .02em; }
+    .resource-link::after { content: "↗"; color: var(--orange); font-size: .78rem; }
+    .resource-link:hover { border-color: var(--green); color: var(--deep); background: #fffaf0; }
+    .weekly-plans { display: grid; gap: 8px; margin: 18px 0 0 88px; }
+    .week-banner { border: 1px solid var(--line); background: #f8f4eb; }
+    .week-banner[open] { background: #fffdf8; }
+    .week-banner summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 12px 14px; cursor: pointer; list-style: none; }
+    .week-banner summary::-webkit-details-marker { display: none; }
+    .week-banner summary::after { content: "+"; color: var(--orange); font: 500 1.15rem/1 "DM Mono", monospace; }
+    .week-banner[open] summary::after { content: "−"; }
+    .week-heading { display: flex; align-items: baseline; gap: 10px; min-width: 0; }
+    .week-number { color: var(--orange); font: 500 .7rem "DM Mono", monospace; text-transform: uppercase; }
+    .week-title { overflow: hidden; color: var(--deep); font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+    .week-meta { flex: 0 0 auto; color: var(--muted); font: 500 .67rem "DM Mono", monospace; text-transform: uppercase; }
+    .day-plan { display: grid; gap: 1px; margin: 0; padding: 0 10px 10px; list-style: none; }
+    .day-row { display: grid; grid-template-columns: 57px minmax(0, 1fr) auto 22px; gap: 10px; align-items: center; padding: 9px 8px; background: rgba(244,241,233,.62); }
+    .day-label { color: var(--orange); font: 500 .67rem "DM Mono", monospace; text-transform: uppercase; }
+    .day-task { color: var(--muted); font-size: .88rem; line-height: 1.35; }
+    .day-link { display: inline-flex; align-items: center; gap: 4px; padding: 5px 7px; border: 1px solid var(--line); color: var(--green); background: #fffdf8; text-decoration: none; white-space: nowrap; font: 500 .65rem "DM Mono", monospace; text-transform: uppercase; }
+    .day-link::after { content: "↗"; color: var(--orange); font-size: .75rem; }
+    .day-link:hover { border-color: var(--green); color: var(--deep); background: #fffaf0; }
+    .day-check { display: inline-flex; align-items: center; justify-content: center; }
+    .day-check input { width: 17px; height: 17px; margin: 0; accent-color: var(--orange); }
+    .day-row.done .day-task { color: var(--ink); text-decoration: line-through; text-decoration-color: rgba(217,104,60,.7); }
+    .plan-note { margin: 9px 0 0 88px; color: var(--muted); font-size: .78rem; }
+    .progress-secondary { margin-top: 7px; color: var(--muted); font-size: .75rem; }
+    .stage.done { background: #f1f7ef; }
+    .stage.done h3 { text-decoration: line-through; text-decoration-color: rgba(217,104,60,.65); }
+    .lower { margin: 60px 0 72px; padding-top: 34px; border-top: 1px solid var(--line); }
+    .lower-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .note { padding: 22px 23px; border: 1px solid var(--line); background: rgba(255,253,248,.62); }
+    .note h3 { margin-bottom: 12px; color: var(--deep); font: 600 1.45rem/1 "Newsreader", serif; }
+    .note p, .note li { color: var(--muted); font-size: .92rem; }
+    .note p:last-child { margin-bottom: 0; }
+    .note ul { margin: 0; padding-left: 19px; }
+    .note li + li { margin-top: 6px; }
+    .wide { grid-column: 1 / -1; }
+    .matrix { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .matrix th, .matrix td { padding: 9px 8px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+    .matrix th { color: var(--deep); font: 500 .68rem "DM Mono", monospace; letter-spacing: .05em; text-transform: uppercase; }
+    .matrix td { color: var(--muted); }
+    footer { padding: 18px 0 30px; color: var(--muted); font-size: .78rem; border-top: 1px solid var(--line); }
+    @media (max-width: 820px) {
+      .hero { grid-template-columns: 1fr; gap: 30px; padding: 44px 0 42px; }
+      .facts { grid-template-columns: repeat(2, 1fr); }
+      .fact:nth-child(2) { border-right: 0; }
+      .fact:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+      .workspace { grid-template-columns: 1fr; gap: 32px; }
+      aside { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .rail-card + .rail-card { margin-top: 0; }
+      .roadmap { grid-template-columns: repeat(3, 1fr); }
+      .stage-body { margin-left: 0; }
+      .resource-links, .weekly-plans, .gate, .plan-note { margin-left: 0; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(100% - 28px, 1120px); }
+      .topline { align-items: flex-start; flex-direction: column; gap: 8px; }
+      h1 { font-size: clamp(2.9rem, 16vw, 4.4rem); }
+      aside, .lower-grid { grid-template-columns: 1fr; }
+      .roadmap { grid-template-columns: repeat(2, 1fr); }
+      .stage-top { grid-template-columns: 55px minmax(0, 1fr); gap: 14px; }
+      .weeks { grid-column: 2; }
+      .stage-inner { padding: 20px; }
+      .stage-body { grid-template-columns: 1fr; gap: 10px; }
+      .week-banner summary { align-items: flex-start; }
+      .week-heading { display: block; }
+      .week-title { display: block; margin-top: 3px; white-space: normal; }
+      .week-meta { margin-left: 8px; }
+      .day-row { grid-template-columns: 48px minmax(0, 1fr) 22px; gap: 7px; }
+      .day-link { grid-column: 2; justify-self: start; }
+      .day-check { grid-column: 3; grid-row: 1 / span 2; }
+      .matrix { font-size: .8rem; }
+      .matrix th, .matrix td { padding: 8px 5px; }
+    }
+    @media print {
+      body { background: #fff; }
+      body::before, aside, .gate input { display: none; }
+      .shell { width: 100%; }
+      .hero { padding-top: 25px; }
+      .workspace { display: block; margin-top: 25px; }
+      .stage { break-inside: avoid; box-shadow: none; }
+      .lower { margin-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell topline">
+      <div class="brand mono">Competency plan / SAP Business AI</div>
+      <div class="status mono">40 weeks · 8–10 hours/week</div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="title">
+      <div>
+        <div class="kicker mono">Full-stack engineer → SAP AI solution consultant</div>
+        <h1 id="title">Learn the capability. Prove the capability.</h1>
+        <p class="dek">A competency-based route for an experienced React / React Native / Node.js engineer. Progress only when the work can be demonstrated—not when another course is finished.</p>
+      </div>
+      <aside class="principle">
+        <strong>The rule</strong>
+        <p>Build, explain, secure, deploy, evaluate, and defend each stage before moving on. Certification follows hands-on capability.</p>
+      </aside>
+    </section>
+
+    <section class="facts" aria-label="Plan facts">
+      <div class="fact"><strong>9 months</strong><span>guided progression</span></div>
+      <div class="fact"><strong>40 weeks</strong><span>five focused days/week</span></div>
+      <div class="fact"><strong>200 sessions</strong><span>about 2 hours/day</span></div>
+      <div class="fact"><strong>2 credentials</strong><span>C_AIG + CAP Backend</span></div>
+    </section>
+
+    <div class="workspace">
+      <aside aria-label="Plan navigation">
+        <div class="rail-card">
+          <div class="rail-title mono">Daily progress</div>
+          <div class="progress" aria-hidden="true"><i id="progressFill"></i></div>
+          <div class="progress-meta"><span id="progressText">0 / 200 days</span><span id="progressPercent">0%</span></div>
+          <div class="progress-secondary" id="stageText">0 / 10 stage gates</div>
+        </div>
+        <div class="rail-card">
+          <div class="rail-title mono">Jump to a stage</div>
+          <ol class="jump">
+            <li><a href="#stage-0"><b>00</b> Baseline</a></li>
+            <li><a href="#stage-1"><b>01</b> BTP foundation</a></li>
+            <li><a href="#stage-2"><b>02</b> CAP development</a></li>
+            <li><a href="#stage-3"><b>03</b> AI foundations</a></li>
+            <li><a href="#stage-4"><b>04</b> AI Core + Hub</a></li>
+            <li><a href="#stage-5"><b>05</b> Enterprise RAG</a></li>
+            <li><a href="#stage-6"><b>06</b> Joule ecosystem</a></li>
+            <li><a href="#stage-7"><b>07</b> Joule Studio</a></li>
+            <li><a href="#stage-8"><b>08</b> Consulting</a></li>
+            <li><a href="#stage-9"><b>09</b> Capstone</a></li>
+          </ol>
+        </div>
+      </aside>
+
+      <section aria-labelledby="route-title">
+          <div class="section-head">
+            <div class="kicker mono">The route</div>
+            <h2 id="route-title">From application builder to trusted AI advisor.</h2>
+            <p>The sequence compounds: SAP platform → CAP → AI patterns → SAP AI services → grounded enterprise solutions → Joule → consulting judgment.</p>
+            <p class="plan-note" style="margin:12px 0 0;">Daily rhythm: five focused sessions per week, approximately 2 hours per session. Use weekends for catch-up, review, or rest.</p>
+          </div>
+
+        <nav class="roadmap" aria-label="Timeline">
+          <a href="#stage-0" style="--accent:#1f6650"><small>W01–10</small><span>Platform + CAP</span></a>
+          <a href="#stage-3" style="--accent:#d9683c"><small>W11–20</small><span>AI + SAP AI Core</span></a>
+          <a href="#stage-5" style="--accent:#416ea8"><small>W21–25</small><span>Grounded AI</span></a>
+          <a href="#stage-6" style="--accent:#8a5aa7"><small>W26–33</small><span>Joule + agents</span></a>
+          <a href="#stage-8" style="--accent:#b47a26"><small>W34–40</small><span>Consult + prove</span></a>
+        </nav>
+
+        <div class="stages">
+          <article class="stage" id="stage-0" style="--accent:#1f6650">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">00<small>Ready</small></div><div><h3>Baseline &amp; development environment</h3><p class="weeks">Week 1</p></div></div>
+              <div class="stage-body">
+                <div><h4>Understand</h4><p>SAP Universal ID, BTP global account / subaccount / space, entitlements, Cloud Foundry, BAS / Build Code, APIs / OData, destinations, authorization, and CLI basics.</p></div>
+                <div><h4>Do</h4><p>Create the BTP account, open a subaccount and Cloud Foundry space, access BAS, and deploy one simple application.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 0 resources">
+                <a class="resource-link" href="https://developers.sap.com/tutorials/hcp-create-trial-account.html" target="_blank" rel="noreferrer">Study · BTP trial setup</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/cp-trial-quick-onboarding.html" target="_blank" rel="noreferrer">Learn · BTP cockpit tour</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/appstudio-onboarding.html" target="_blank" rel="noreferrer">Hands-on · BAS setup</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/btp-cockpit-setup.html" target="_blank" rel="noreferrer">Environment · account choice</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="0"></div>
+              <label class="gate"><input type="checkbox" data-stage="0" /> I can navigate BTP and deploy a basic application without guided setup.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-1" style="--accent:#23806a">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">01<small>Foundation</small></div><div><h3>SAP BTP foundation</h3><p class="weeks">Weeks 2–5</p></div></div>
+              <div class="stage-body">
+                <div><h4>Learn</h4><ul><li>BTP architecture and service marketplace</li><li>Instances, service keys, destinations</li><li>Authentication, XSUAA, connectivity</li><li>HANA Cloud and Cloud Foundry operations</li></ul></div>
+                <div><h4>Build · Project 1</h4><p>Node.js application: React UI → Node service → REST/OData endpoint → persistence → authentication → Cloud Foundry deployment.</p><p><b>Gate:</b> Explain the request path from browser to backend and persistence.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 1 resources">
+                <a class="resource-link" href="https://learning.sap.com/courses/developing-applications-for-sap-btp-cloud-foundry-runtime" target="_blank" rel="noreferrer">Study · Cloud Foundry course</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/btp-cf-buildpacks-node-create/" target="_blank" rel="noreferrer">Demo · deploy Node app</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/appstudio-fioriapps-create" target="_blank" rel="noreferrer">Hands-on · Fiori app</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/cp-trial-quick-onboarding.html" target="_blank" rel="noreferrer">Environment · Cloud Foundry trial</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="1"></div>
+              <label class="gate"><input type="checkbox" data-stage="1" /> I can explain and operate the basic BTP application path without assistance.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-2" style="--accent:#2d8a73">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">02<small>Practitioner</small></div><div><h3>SAP Cloud Application Programming Model</h3><p class="weeks">Weeks 6–10</p></div></div>
+              <div class="stage-body">
+                <div><h4>Learn</h4><ul><li>CDS, entities, associations, services</li><li>OData V4 and custom Node.js handlers</li><li>External services, destinations, security</li><li>HANA Cloud, Fiori elements, deployment</li></ul></div>
+                <div><h4>Build · Project 2</h4><p>Purchase Order Exception Application using React / Fiori → CAP Node.js → OData → mock or SAP API → database.</p><p><b>Milestone:</b> CAP Backend Developer certification preparation.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 2 resources">
+                <a class="resource-link" href="https://learning.sap.com/courses/introduction-to-sap-cloud-application-programming-model" target="_blank" rel="noreferrer">Study · CAP fundamentals</a>
+                <a class="resource-link" href="https://learning.sap.com/courses/develop-extensions-with-cap-following-the-sap-btp-developer-s-guide" target="_blank" rel="noreferrer">Learn · CAP extension course</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/mission-build-a-business-application-using-cap-for-node-js/" target="_blank" rel="noreferrer">Demo · build and deploy CAP</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/cap-self-contained-dev-env.html" target="_blank" rel="noreferrer">Hands-on · CAP dev container</a>
+                <a class="resource-link" href="https://www.credly.com/org/sap/badge/sap-certified-backend-developer-sap-cloud-applicati" target="_blank" rel="noreferrer">Certify · CAP backend</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="2"></div>
+              <label class="gate"><input type="checkbox" data-stage="2" /> I can design, build, secure, deploy, and troubleshoot a small CAP extension.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-3" style="--accent:#d9683c">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">03<small>Foundation</small></div><div><h3>AI engineering foundations</h3><p class="weeks">Weeks 11–14</p></div></div>
+              <div class="stage-body">
+                <div><h4>Learn</h4><ul><li>Enough Python for SDKs, notebooks, JSON, HTTP and async work</li><li>LLMs, tokens, embeddings, prompting, structured output</li><li>RAG, tools, agents, evaluation and hallucination</li><li>Grounding, guardrails, injection and responsible AI</li></ul></div>
+                <div><h4>Build · Project 3</h4><p>Standalone document workflow: document → LLM → classification + summary + structured JSON, then add embeddings, retrieval, and grounded answers.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 3 resources">
+                <a class="resource-link" href="https://docs.python.org/3/tutorial/" target="_blank" rel="noreferrer">Study · Python tutorial</a>
+                <a class="resource-link" href="https://developers.sap.com/ai/" target="_blank" rel="noreferrer">Learn · SAP AI developer lane</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/ai-core-generative-ai/" target="_blank" rel="noreferrer">Demo · prompt an LLM</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/ai-core-helloworld.html" target="_blank" rel="noreferrer">Hands-on · first AI project</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="3"></div>
+              <label class="gate"><input type="checkbox" data-stage="3" /> I can build a small AI workflow outside SAP and explain where it can fail.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-4" style="--accent:#b45549">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">04<small>Practitioner</small></div><div><h3>SAP AI Core &amp; Generative AI Hub</h3><p class="weeks">Weeks 15–20</p></div></div>
+              <div class="stage-body">
+                <div><h4>Learn</h4><ul><li>AI Core, AI Launchpad, resource groups</li><li>Model deployments, orchestration, Prompt Registry</li><li>SAP Cloud SDK for AI and prompt templates</li><li>Model selection, masking, filtering, observability</li></ul></div>
+                <div><h4>Build · Project 4</h4><p>Purchase Order Exception Copilot: retrieve PO, supplier, history, rules, and documentation; return issue, evidence, recommended action, and limitations.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 4 resources">
+                <a class="resource-link" href="https://learning.sap.com/learning-journeys/solving-business-problems-using-sap-s-generative-ai-hub" target="_blank" rel="noreferrer">Study · GenAI Hub journey</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/ai-core-genaihub-provisioning.html" target="_blank" rel="noreferrer">Hands-on · provision AI Core</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/ai-core-generative-ai.html" target="_blank" rel="noreferrer">Demo · prompt with orchestration</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/teched2025-genaihub-basic-trial.html" target="_blank" rel="noreferrer">Environment · GenAI Hub trial</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="4"></div>
+              <label class="gate"><input type="checkbox" data-stage="4" /> I can connect a governed SAP AI workflow to an enterprise application.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-5" style="--accent:#416ea8">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">05<small>Engineer</small></div><div><h3>Enterprise RAG &amp; grounded AI</h3><p class="weeks">Weeks 21–25</p></div></div>
+              <div class="stage-body">
+                <div><h4>Learn</h4><ul><li>Chunking, embeddings, vectorization, retrieval</li><li>HANA Cloud vector capabilities and metadata</li><li>Authorization-aware retrieval and citations</li><li>Evaluation datasets, factuality and relevance</li></ul></div>
+                <div><h4>Build · Project 5</h4><p>SAP Support / Process Knowledge Assistant backed by process documents, API specs, SOPs, and mock transaction information. Every answer returns evidence.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 5 resources">
+                <a class="resource-link" href="https://developers.sap.com/concepts/generative-ai-hub-llm-integration/" target="_blank" rel="noreferrer">Study · GenAI integration concepts</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/ai-core-genai-hana-vector/" target="_blank" rel="noreferrer">Demo · HANA vector RAG</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/ai-core-orchestration-grounding.html" target="_blank" rel="noreferrer">Hands-on · grounding</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/ai-core-genaihub-evaluation-with-grounding/" target="_blank" rel="noreferrer">Evaluate · grounded answers</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="5"></div>
+              <label class="gate"><input type="checkbox" data-stage="5" /> I can design a grounded answer path with evidence, access control, and measurable retrieval quality.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-6" style="--accent:#8a5aa7">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">06<small>Practitioner</small></div><div><h3>Joule: developer, consultant, business user</h3><p class="weeks">Weeks 26–29</p></div></div>
+              <div class="stage-body">
+                <div><h4>Understand three views</h4><p>Joule for Developers: code understanding, generation and tests. Joule for Consultants: solution research, SAP knowledge and delivery work. Joule for Business Users: persona → task → data → assistance → action → control → outcome.</p></div>
+                <div><h4>Practice</h4><p>Use SAP Build Code and study the current Joule learning journeys. Record when Joule is useful, when a rule is better, and what control the user still needs.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 6 resources">
+                <a class="resource-link" href="https://learning.sap.com/courses/introducing-joule" target="_blank" rel="noreferrer">Study · Joule ecosystem</a>
+                <a class="resource-link" href="https://learning.sap.com/courses/introducing-sap-joule-for-consultants" target="_blank" rel="noreferrer">Learn · Joule for Consultants</a>
+                <a class="resource-link" href="https://learning.sap.com/learning-journeys/experiencing-sap-business-ai" target="_blank" rel="noreferrer">Demo · Business AI use cases</a>
+                <a class="resource-link" href="https://learning.sap.com/courses/experiencing-sap-business-ai/demonstrating-joule" target="_blank" rel="noreferrer">Practice · demonstrate Joule</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="6"></div>
+              <label class="gate"><input type="checkbox" data-stage="6" /> I can explain Joule’s three contexts and choose an appropriate one for a business scenario.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-7" style="--accent:#a35f9a">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">07<small>Engineer</small></div><div><h3>Joule Studio &amp; agentic AI</h3><p class="weeks">Weeks 30–33</p></div></div>
+              <div class="stage-body">
+                <div><h4>Learn</h4><ul><li>Skills, agents, tools, APIs and workflows</li><li>Grounding, instructions, context and evaluation</li><li>Human approval, action authorization, exceptions</li><li>Lifecycle and governance</li></ul></div>
+                <div><h4>Build · Project 6</h4><p>Supplier Exception Agent: detect → retrieve → interpret policy → propose options → ask for approval → initiate action → log result.</p><p><b>Assessment:</b> label reasoning, deterministic logic, and human decision separately.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 7 resources">
+                <a class="resource-link" href="https://learning.sap.com/courses/introducing-joule-studio" target="_blank" rel="noreferrer">Study · Joule Studio</a>
+                <a class="resource-link" href="https://developers.sap.com/tutorials/joulestudio-document-grounding/" target="_blank" rel="noreferrer">Demo · agent with grounding</a>
+                <a class="resource-link" href="https://learning.sap.com/live-sessions/step-by-step-guidance-to-build-custom-joule-agents-in-joule-studio-1" target="_blank" rel="noreferrer">Hands-on · build a custom agent</a>
+                <a class="resource-link" href="https://learning.sap.com/courses/introducing-joule/getting-to-know-joule-agents_f9d18ca0-1021-4c1a-a044-4c00ec8c2898" target="_blank" rel="noreferrer">Assess · agent lifecycle</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="7"></div>
+              <label class="gate"><input type="checkbox" data-stage="7" /> I can design an agent with explicit boundaries between reasoning, business logic, and human control.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-8" style="--accent:#b47a26">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">08<small>Consultant</small></div><div><h3>AI consulting capability</h3><p class="weeks">Weeks 34–36</p></div></div>
+              <div class="stage-body">
+                <div><h4>Use the decision chain</h4><p>Business problem → persona → process / task → decision → data → AI suitability → pattern → SAP capability → integration → controls → KPI.</p></div>
+                <div><h4>Classify the opportunity</h4><p>Knowledge/search, extraction, classification, summarization, prediction, recommendation, conversation, generation, developer assistance, process assistance, automation, or agentic execution.</p><p>Be able to say: <b>“This does not need AI.”</b></p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 8 resources">
+                <a class="resource-link" href="https://learning.sap.com/learning-journeys/experiencing-sap-business-ai" target="_blank" rel="noreferrer">Study · Business AI journey</a>
+                <a class="resource-link" href="https://learning.sap.com/courses/sap-joule-for-consultants/describing-the-consultant-engagement-journey" target="_blank" rel="noreferrer">Learn · consultant engagement</a>
+                <a class="resource-link" href="https://developers.sap.com/ai/" target="_blank" rel="noreferrer">Demo · SAP AI patterns</a>
+                <a class="resource-link" href="https://architecture.learning.sap.com/docs/golden-path/ai-golden-path/build-and-deliver/genai-applications" target="_blank" rel="noreferrer">Architecture · GenAI applications</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="8"></div>
+              <label class="gate"><input type="checkbox" data-stage="8" /> I can defend the business case and choose between rules, predictive AI, GenAI, and agentic AI.</label>
+            </div>
+          </article>
+
+          <article class="stage" id="stage-9" style="--accent:#e86e3e">
+            <div class="stage-inner">
+              <div class="stage-top"><div class="stage-num">09<small>Prove it</small></div><div><h3>End-to-end capstone &amp; certification</h3><p class="weeks">Weeks 37–40</p></div></div>
+              <div class="stage-body">
+                <div><h4>Capstone</h4><p>AI-enabled Procurement Exception Management: Joule or custom UI → agent / application → AI Core + Generative AI Hub → RAG / HANA vector → CAP → SAP APIs / OData → S/4HANA or mock backend.</p></div>
+                <div><h4>Must include</h4><p>React / Fiori, Node.js / CAP, Python where appropriate, auth, CI/CD, tests, monitoring, evaluation, guardrails, human approval, architecture documentation, and a live demo.</p></div>
+              </div>
+              <div class="resource-links" aria-label="Stage 9 resources">
+                <a class="resource-link" href="https://learning.sap.com/artificial-intelligence" target="_blank" rel="noreferrer">Study · SAP AI learning hub</a>
+                <a class="resource-link" href="https://architecture.learning.sap.com/docs/golden-path/ai-golden-path/build-and-deliver/genai-applications" target="_blank" rel="noreferrer">Build · GenAI reference path</a>
+                <a class="resource-link" href="https://learning.sap.com/certifications/sap-certified-associate-sap-generative-ai-developer" target="_blank" rel="noreferrer">Certify · C_AIG</a>
+                <a class="resource-link" href="https://learning.sap.com/courses/sap-cloud-application-programming-model-delta" target="_blank" rel="noreferrer">Certify · CAP stay certified</a>
+              </div>
+              <div class="weekly-plans" data-week-stage="9"></div>
+              <label class="gate"><input type="checkbox" data-stage="9" /> I can present the business challenge, architecture, controls, demo, value, limitations, and production considerations.</label>
+            </div>
+          </article>
+        </div>
+
+        <section class="lower" aria-labelledby="working-title">
+          <div class="kicker mono">Make the plan workable</div>
+          <h2 id="working-title" style="font:600 clamp(2rem,4vw,3.35rem)/1 'Newsreader',serif;letter-spacing:-.04em;">The operating model.</h2>
+          <div class="lower-grid">
+            <div class="note">
+              <h3>Weekly rhythm</h3>
+              <ul><li>2–3 hours: concepts and current SAP learning material.</li><li>4–6 hours: build, deploy, test, and document.</li><li>1 hour: explain the work aloud and record gaps.</li><li>Move on only after the stage gate is demonstrable.</li></ul>
+            </div>
+            <div class="note">
+              <h3>Practice environments</h3>
+              <ul><li>Local: Node, CAP, Python, Docker, mocked services. Use from Stages 1–3.</li><li>BTP Trial: Cloud Foundry, BAS, CAP, APIs, destinations, security.</li><li>Generative AI Hub Basic Trial: AI Launchpad, orchestration, grounding.</li><li>Learning Hub or corporate landscape: serious practice and certification.</li></ul>
+            </div>
+            <div class="note wide">
+              <h3>Provision before the advanced stages</h3>
+              <p>For Stages 4–9, plan for a controlled BTP training subaccount with AI Core Extended, AI Launchpad, Generative AI Hub, HANA Cloud, Build / Build Code, Joule entitlement, Joule Studio, and a controlled SAP backend. AI Core Free or Standard alone does not cover Generative AI Hub scenarios; Joule Studio needs the appropriate SAP Build and Joule licensing.</p>
+            </div>
+            <div class="note wide">
+              <h3>How to assess real skill</h3>
+              <table class="matrix">
+                <thead><tr><th>Level</th><th>Evidence</th></tr></thead>
+                <tbody>
+                  <tr><td><b>Foundation</b></td><td>Explains the concepts and completes guided exercises.</td></tr>
+                  <tr><td><b>Practitioner</b></td><td>Modifies and builds a solution with limited guidance.</td></tr>
+                  <tr><td><b>Engineer</b></td><td>Independently designs, builds, secures, deploys, evaluates, and troubleshoots.</td></tr>
+                  <tr><td><b>Consultant</b></td><td>Identifies the right problem, chooses the right pattern, explains business value and risk, and defends the architecture.</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="note">
+              <h3>Credentials</h3>
+              <ul><li><b>Required:</b> SAP Certified Associate – SAP Generative AI Developer (C_AIG).</li><li><b>Strongly recommended:</b> SAP Certified – Backend Developer – SAP CAP.</li><li><b>Optional later:</b> relevant Joule / Business AI achievements and architecture / integration certification.</li></ul>
+            </div>
+            <div class="note">
+              <h3>Final proof</h3>
+              <p>The capstone is the real qualification: a working enterprise AI solution plus a consultant-style defense of why the architecture exists, what it controls, what it improves, and where it should not be used.</p>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+  <footer><div class="shell">Built as a working competency tracker · Verify current SAP course names, certification versions, licensing, and trial availability before scheduling each stage.</div></footer>
+
+  <script>
+    (() => {
+      const key = "sap-ai-competency-plan-progress";
+      const stageBoxes = [...document.querySelectorAll("input[data-stage]")];
+      const fill = document.getElementById("progressFill");
+      const text = document.getElementById("progressText");
+      const percent = document.getElementById("progressPercent");
+      const stageText = document.getElementById("stageText");
+      let saved = {};
+      try { saved = JSON.parse(localStorage.getItem(key) || "{}"); } catch (_) {}
+
+      const weeks = [
+        [0, "Baseline, accounts, and first deployment", "SAP Universal ID, BTP trial, BAS, Cloud Foundry, and a first deployed app"],
+        [1, "BTP account model and cockpit", "global accounts, subaccounts, spaces, entitlements, quotas, and cockpit navigation"],
+        [1, "Cloud Foundry operations", "apps, buildpacks, routes, staging, scaling, logs, and deployment troubleshooting"],
+        [1, "Services, security, and destinations", "service bindings, XSUAA, roles, OAuth, destinations, and connectivity"],
+        [1, "Project 1 delivery", "a small React + Node.js BTP application with persistence, auth, and deployment"],
+        [2, "CAP project shape", "CAP project structure, CDS, services, local runtime, persistence, and OData"],
+        [2, "CDS domain modeling", "purchase orders, suppliers, exceptions, associations, sample data, and metadata"],
+        [2, "OData services and custom logic", "service projections, handlers, validation, actions, errors, and tests"],
+        [2, "External services and security", "destinations, external APIs, roles, authorization, retries, and clean-core thinking"],
+        [2, "Deploy Project 2 and certification review", "the Purchase Order Exception Application, HANA Cloud, Cloud Foundry, and CAP exam scope"],
+        [3, "Python working fluency", "Python syntax, environments, packages, HTTP, JSON, pandas, logging, and tests"],
+        [3, "LLM foundations and prompting", "tokens, context, inference, prompting, structured output, and prompt tests"],
+        [3, "Embeddings, retrieval, and RAG", "embeddings, chunking, vector search, retrieval, citations, and grounded answers"],
+        [3, "Standalone AI application", "a document classifier and summarizer with retrieval, guardrails, and evaluation"],
+        [4, "AI Core and AI Launchpad setup", "AI Core, AI Launchpad, resource groups, service keys, deployments, and workflows"],
+        [4, "Generative AI Hub orchestration", "orchestration, templates, model calls, masking, filtering, and error handling"],
+        [4, "Prompt Registry and model selection", "prompt versions, model comparison, quality, latency, cost, and data controls"],
+        [4, "Add AI to the CAP application", "the Purchase Order Exception Copilot with server-side AI integration and evidence"],
+        [4, "Guardrails, observability, and copilot demo", "traces, safe logs, injection tests, unsupported questions, and responsible AI"],
+        [4, "Copilot hardening and demo", "a stable, reviewed, governed copilot demo with known limitations and pilot backlog"],
+        [5, "Chunking and HANA vector search", "document ingestion, HANA vectors, metadata, embeddings, and similarity search"],
+        [5, "Retrieval quality and metadata", "question sets, metadata filters, top-k quality, exact terms, and retrieval trade-offs"],
+        [5, "Grounding and authorization-aware answers", "grounding, document repositories, access filters, citations, and safe unknowns"],
+        [5, "Evaluation dataset and metrics", "reference answers, groundedness, relevance, latency, cost, and failure analysis"],
+        [5, "Knowledge assistant release", "the SAP Support / Process Knowledge Assistant, tests, refresh process, and release scorecard"],
+        [6, "Joule ecosystem", "Joule assistants, skills, agents, workflows, business context, permissions, and oversight"],
+        [6, "Joule for Developers", "code understanding, generation, refactoring, test generation, and human review"],
+        [6, "Joule for Consultants", "SAP-grounded research, SAP Notes, configuration questions, and delivery artifacts"],
+        [6, "Business-user process AI", "persona, task, process context, data, assistance, action, control, and outcome"],
+        [7, "Joule Studio orientation", "skills, agents, workflows, prompts, tools, triggers, and entitlement assumptions"],
+        [7, "Skills, tools, and workflows", "API actions, policy lookup, approval checkpoints, schemas, and audit boundaries"],
+        [7, "Supplier Exception Agent build", "detect, retrieve, interpret policy, ask, approve, act, and log"],
+        [7, "Controls, tests, and deployment", "authorization, idempotency, guardrails, evaluation cases, deployment, and runbooks"],
+        [8, "Use-case discovery", "personas, business problems, AI suitability, use-case categories, value, and non-goals"],
+        [8, "Pattern and architecture choice", "rules, predictive AI, GenAI, RAG, agents, SAP capabilities, and controls"],
+        [8, "Consulting recommendation and pitch", "KPIs, delivery plan, risk, demo storyboard, stakeholder questions, and handoff"],
+        [9, "Capstone discovery and architecture", "Procurement Exception Management scope, data contracts, architecture, and backlog"],
+        [9, "Capstone implementation", "React/Fiori, CAP, AI Core, RAG, agent workflow, approvals, and an end-to-end slice"],
+        [9, "Evaluation and production readiness", "automated tests, evaluation, security, monitoring, runbook, rollback, and limitations"],
+        [9, "Presentation and certification", "consultant story, live demo, C_AIG/CAP review, defense, portfolio, and next steps"]
+      ].map((item, index) => ({ number: index + 1, stage: item[0], title: item[1], focus: item[2] }));
+
+      const templates = {
+        0: ["Study {focus}; create a one-page map of the terms and relationships.", "Complete the official setup tutorial for {focus}; record commands, URLs, and screenshots.", "Build a small proof of {focus} in the repository; keep the result reproducible.", "Test one failure or access issue related to {focus}; document the fix and the evidence.", "Explain {focus} aloud; update the README and list any access, licensing, or environment blockers."],
+        1: ["Study {focus} in SAP Learning; write five bullets and one question you still have.", "Configure or inspect {focus} in the BTP cockpit and save the important settings in notes.", "Apply {focus} to the current BTP project; commit a small working change.", "Run a troubleshooting exercise for {focus}: break one thing, inspect logs, and recover it.", "Demo {focus} in five minutes and write the next improvement for the following week."],
+        2: ["Complete the CAP lesson or chapter for {focus}; map it to the current application.", "Model or configure {focus} in the CAP project using a small, realistic example.", "Implement one user-visible capability using {focus}; keep business logic explicit.", "Test {focus} with a happy path, invalid input, missing permission, and backend failure.", "Commit the work, update the architecture note, and explain the trade-offs behind {focus}."],
+        3: ["Study {focus}; create a short glossary and write down the failure modes that matter.", "Recreate a small tutorial or notebook exercise for {focus} from a blank file.", "Apply {focus} to the standalone document AI project and preserve inputs and outputs.", "Evaluate {focus} on five examples; separate retrieval, model, data, and prompt failures.", "Explain {focus} without notes and record one improvement for reliability or safety."],
+        4: ["Study the SAP AI Core or Generative AI Hub material for {focus}; capture the service flow.", "Complete a hands-on setup or configuration exercise for {focus}; keep credentials out of code.", "Integrate {focus} into the current application and verify the request, response, and error paths.", "Trace and test {focus} with one latency, authorization, data, or model failure.", "Demo {focus}, record quality/cost/latency observations, and write the next hardening task."],
+        5: ["Study the RAG, grounding, or evaluation material for {focus}; define the terms in your own words.", "Prepare documents, metadata, vectors, questions, or metrics needed to practice {focus}.", "Implement one working slice of {focus} in the knowledge assistant.", "Evaluate {focus} against representative questions and fix the highest-impact failure.", "Review the result as an enterprise engineer: evidence, authorization, quality, cost, and operations."],
+        6: ["Complete the relevant Joule lesson for {focus}; make a table of what it can and cannot do.", "Try {focus} on a bounded scenario and verify every generated claim against trusted material.", "Apply {focus} to a real project task or consultant artifact; keep human review explicit.", "Compare {focus} with a normal UI, rule, search, or developer workflow and note the better fit.", "Present the value and risks of {focus} to a non-specialist; revise the explanation after questions."],
+        7: ["Study the Joule Studio or agent lesson for {focus}; draw the components and boundaries.", "Configure a small skill, tool, workflow, or agent step for {focus} in the available tenant.", "Build the next working slice of the Supplier Exception Agent using {focus}.", "Test {focus} with missing data, invalid input, unauthorized action, timeout, and duplicate requests.", "Demo the result and label each step as AI reasoning, deterministic logic, or human decision."],
+        8: ["Study the consulting material for {focus}; write the decision chain in your own words.", "Analyze {focus} from the persona, process, data, value, risk, and AI-suitability perspectives.", "Design an architecture or recommendation for {focus}, including controls and measurable outcomes.", "Challenge your recommendation: identify one reason not to use AI and one unresolved decision.", "Present {focus} as a consultant and capture stakeholder questions, assumptions, and next steps."],
+        9: ["Scope {focus}; confirm the user, business outcome, data, success metric, and non-goals.", "Build or document the next implementation slice for {focus}; keep the repository and architecture current.", "Test {focus} for correctness, security, evaluation quality, cost, latency, and failure recovery.", "Rehearse the demo and consultant defense for {focus}; include one failure and one human approval.", "Publish evidence for {focus}: code, README, architecture, evaluation report, demo, and next steps."]
+      };
+
+      const dailyLinks = {
+        0: [
+          ["BTP trial setup", "https://developers.sap.com/tutorials/hcp-create-trial-account.html"],
+          ["BTP cockpit tour", "https://developers.sap.com/tutorials/cp-trial-quick-onboarding.html"],
+          ["BAS setup", "https://developers.sap.com/tutorials/appstudio-onboarding.html"],
+          ["Deploy a Node app", "https://developers.sap.com/tutorials/btp-cf-buildpacks-node-create/"],
+          ["Account options", "https://developers.sap.com/tutorials/btp-cockpit-setup.html"]
+        ],
+        1: [
+          ["Cloud Foundry course", "https://learning.sap.com/courses/developing-applications-for-sap-btp-cloud-foundry-runtime"],
+          ["Deploy Node app", "https://developers.sap.com/tutorials/btp-cf-buildpacks-node-create/"],
+          ["Create Fiori app", "https://developers.sap.com/tutorials/appstudio-fioriapps-create"],
+          ["Deploy applications", "https://developers.sap.com/tutorials/btp-cockpit-cf-deploying-applications"],
+          ["BTP trial tour", "https://developers.sap.com/tutorials/cp-trial-quick-onboarding.html"]
+        ],
+        2: [
+          ["CAP fundamentals", "https://learning.sap.com/courses/introduction-to-sap-cloud-application-programming-model"],
+          ["CAP extension course", "https://learning.sap.com/courses/develop-extensions-with-cap-following-the-sap-btp-developer-s-guide"],
+          ["Build and deploy CAP", "https://developers.sap.com/tutorials/mission-build-a-business-application-using-cap-for-node-js/"],
+          ["CAP dev container", "https://developers.sap.com/tutorials/cap-self-contained-dev-env.html"],
+          ["CAP certification", "https://learning.sap.com/courses/sap-cloud-application-programming-model-delta"]
+        ],
+        3: [
+          ["Python tutorial", "https://docs.python.org/3/tutorial/"],
+          ["SAP AI developer lane", "https://developers.sap.com/ai/"],
+          ["Prompt an LLM", "https://developers.sap.com/tutorials/ai-core-generative-ai.html"],
+          ["First AI project", "https://developers.sap.com/tutorials/ai-core-helloworld.html"],
+          ["Grounding evaluation", "https://developers.sap.com/tutorials/ai-core-genaihub-evaluation-with-grounding/"]
+        ],
+        4: [
+          ["GenAI Hub journey", "https://learning.sap.com/learning-journeys/solving-business-problems-using-sap-s-generative-ai-hub"],
+          ["Provision AI Core", "https://developers.sap.com/tutorials/ai-core-genaihub-provisioning.html"],
+          ["Orchestration tutorial", "https://developers.sap.com/tutorials/ai-core-generative-ai.html"],
+          ["GenAI Hub trial", "https://developers.sap.com/tutorials/teched2025-genaihub-basic-trial.html"],
+          ["Evaluate grounded AI", "https://developers.sap.com/tutorials/ai-core-genaihub-evaluation-with-grounding/"]
+        ],
+        5: [
+          ["RAG concepts", "https://developers.sap.com/concepts/generative-ai-hub-llm-integration/"],
+          ["HANA vector RAG", "https://developers.sap.com/tutorials/ai-core-genai-hana-vector/"],
+          ["Grounding tutorial", "https://developers.sap.com/tutorials/ai-core-orchestration-grounding.html"],
+          ["Grounding evaluation", "https://developers.sap.com/tutorials/ai-core-genaihub-evaluation-with-grounding/"],
+          ["GenAI architecture", "https://architecture.learning.sap.com/docs/golden-path/ai-golden-path/build-and-deliver/genai-applications"]
+        ],
+        6: [
+          ["Joule ecosystem", "https://learning.sap.com/courses/introducing-joule"],
+          ["Joule for Consultants", "https://learning.sap.com/courses/introducing-sap-joule-for-consultants"],
+          ["Business AI journey", "https://learning.sap.com/learning-journeys/experiencing-sap-business-ai"],
+          ["Demonstrate Joule", "https://learning.sap.com/courses/experiencing-sap-business-ai/demonstrating-joule"],
+          ["Consultant engagement", "https://learning.sap.com/courses/sap-joule-for-consultants/describing-the-consultant-engagement-journey"]
+        ],
+        7: [
+          ["Joule Studio intro", "https://learning.sap.com/courses/introducing-joule-studio"],
+          ["Agent with grounding", "https://developers.sap.com/tutorials/joulestudio-document-grounding/"],
+          ["Build a custom agent", "https://learning.sap.com/live-sessions/step-by-step-guidance-to-build-custom-joule-agents-in-joule-studio-1"],
+          ["Agent lifecycle", "https://learning.sap.com/courses/introducing-joule/getting-to-know-joule-agents_f9d18ca0-1021-4c1a-a044-4c00ec8c2898"],
+          ["Create an agent", "https://developers.sap.com/tutorials/joule-studio-codejam-6-agent?embed=full"]
+        ],
+        8: [
+          ["Business AI journey", "https://learning.sap.com/learning-journeys/experiencing-sap-business-ai"],
+          ["Consultant engagement", "https://learning.sap.com/courses/sap-joule-for-consultants/describing-the-consultant-engagement-journey"],
+          ["SAP AI patterns", "https://developers.sap.com/ai/"],
+          ["GenAI architecture", "https://architecture.learning.sap.com/docs/golden-path/ai-golden-path/build-and-deliver/genai-applications"],
+          ["Joule for Consultants", "https://learning.sap.com/courses/introducing-sap-joule-for-consultants"]
+        ],
+        9: [
+          ["SAP AI learning hub", "https://learning.sap.com/artificial-intelligence"],
+          ["GenAI reference path", "https://architecture.learning.sap.com/docs/golden-path/ai-golden-path/build-and-deliver/genai-applications"],
+          ["C_AIG certification", "https://learning.sap.com/certifications/sap-certified-associate-sap-generative-ai-developer"],
+          ["CAP certification review", "https://learning.sap.com/courses/sap-cloud-application-programming-model-delta"],
+          ["CAP extension course", "https://learning.sap.com/courses/develop-extensions-with-cap-following-the-sap-btp-developer-s-guide"]
+        ]
+      };
+
+      const pad = (value) => String(value).padStart(2, "0");
+      weeks.forEach((week) => {
+        const mount = document.querySelector(`[data-week-stage="${week.stage}"]`);
+        if (!mount) return;
+        const dayMarkup = templates[week.stage].map((template, dayIndex) => {
+          const link = dailyLinks[week.stage][dayIndex];
+          return `
+          <div class="day-row">
+            <span class="day-label">Day ${dayIndex + 1}</span>
+            <span class="day-task">${template.replace("{focus}", week.focus)}</span>
+            <a class="day-link" href="${link[1]}" target="_blank" rel="noreferrer">${link[0]}</a>
+            <label class="day-check" aria-label="Complete week ${week.number}, day ${dayIndex + 1}">
+              <input type="checkbox" data-day-plan="${week.number}-${dayIndex + 1}" />
+            </label>
+          </div>`;
+        }).join("");
+        mount.insertAdjacentHTML("beforeend", `
+          <details class="week-banner" id="week-${pad(week.number)}">
+            <summary>
+              <span class="week-heading"><span class="week-number">Week ${pad(week.number)}</span><span class="week-title">${week.title}</span></span>
+              <span class="week-meta" data-week-progress="${week.number}">0 / 5 days · 10h</span>
+            </summary>
+            <div class="day-plan">${dayMarkup}</div>
+          </details>`);
+      });
+
+      const dayBoxes = [...document.querySelectorAll("input[data-day-plan]")];
+      const stageState = saved.stages || {};
+      const dayState = saved.days || {};
+      const oldStageState = saved.stages ? {} : saved;
+      const render = () => {
+        const completeDays = dayBoxes.filter((box) => box.checked).length;
+        const totalDays = dayBoxes.length;
+        const value = totalDays ? Math.round((completeDays / totalDays) * 100) : 0;
+        const completeStages = stageBoxes.filter((box) => box.checked).length;
+        fill.style.width = value + "%";
+        text.textContent = completeDays + " / " + totalDays + " days";
+        percent.textContent = value + "%";
+        stageText.textContent = completeStages + " / " + stageBoxes.length + " stage gates";
+        stageBoxes.forEach((box) => box.closest(".stage").classList.toggle("done", box.checked));
+        dayBoxes.forEach((box) => box.closest(".day-row").classList.toggle("done", box.checked));
+        weeks.forEach((week) => {
+          const weekBoxes = dayBoxes.filter((box) => box.dataset.dayPlan.startsWith(week.number + "-"));
+          const done = weekBoxes.filter((box) => box.checked).length;
+          const meta = document.querySelector(`[data-week-progress="${week.number}"]`);
+          if (meta) meta.textContent = done + " / 5 days · 10h";
+        });
+      };
+
+      stageBoxes.forEach((box) => {
+        box.checked = stageState[box.dataset.stage] === true || oldStageState[box.dataset.stage] === true;
+        box.addEventListener("change", () => {
+          stageState[box.dataset.stage] = box.checked;
+          saved.stages = stageState;
+          try { localStorage.setItem(key, JSON.stringify(saved)); } catch (_) {}
+          render();
+        });
+      });
+      dayBoxes.forEach((box) => {
+        box.checked = dayState[box.dataset.dayPlan] === true;
+        box.addEventListener("change", () => {
+          dayState[box.dataset.dayPlan] = box.checked;
+          saved.days = dayState;
+          try { localStorage.setItem(key, JSON.stringify(saved)); } catch (_) {}
+          render();
+        });
+      });
+      render();
+    })();
+  </script>
+</body>
+</html>
