@@ -619,16 +619,65 @@
         ]
       };
 
+      const verifiedWeekPlans = {
+        1: [
+          {
+            task: "Create or confirm your SAP Universal ID and SAP BTP trial account (45 min). Record the region, cockpit URL, and account expiry details; then write a short account-access checklist (75 min).",
+            link: ["Create an SAP BTP trial account", "https://developers.sap.com/tutorials/hcp-create-trial-account.html"]
+          },
+          {
+            task: "Follow the cockpit tour (60 min). Locate the global account, trial subaccount, Cloud Foundry environment, org, and space; draw their hierarchy and note where entitlements are shown (60 min).",
+            link: ["Take a tour of SAP BTP trial", "https://developers.sap.com/tutorials/cp-trial-quick-onboarding.html"]
+          },
+          {
+            task: "Open SAP Business Application Studio and create the recommended dev space (60 min). Explore the workspace, terminal, command palette, and extensions; save setup screenshots and notes (60 min).",
+            link: ["Set up SAP Business Application Studio", "https://developers.sap.com/tutorials/appstudio-onboarding.html"]
+          },
+          {
+            task: "Create and deploy the tutorial Node.js application to SAP BTP Cloud Foundry (90 min). Open its route, inspect the deployment in the cockpit, and record the commands and result (30 min).",
+            link: ["Deploy a Node.js app to Cloud Foundry", "https://developers.sap.com/tutorials/btp-cf-buildpacks-node-create/"]
+          },
+          {
+            task: "Review SAP BTP account options and compare trial, free-tier, and enterprise access (60 min). Finish a README containing your setup map, deployed URL, evidence, blockers, and next actions (60 min).",
+            link: ["Choose and set up an SAP BTP account", "https://developers.sap.com/tutorials/btp-cockpit-setup.html"]
+          }
+        ],
+        2: [
+          {
+            task: "Study the official SAP BTP account model (60 min). Create a one-page diagram defining global account, directory, subaccount, Cloud Foundry org, and space, including their relationships (60 min).",
+            link: ["Study the SAP BTP account model", "https://help.sap.com/docs/btp/btp-admin-guide/account-model"]
+          },
+          {
+            task: "Use the cockpit administration guide while navigating your own account (60 min). Record your global account, subaccount, region, environment, org, space, and the purpose of each relevant cockpit page (60 min).",
+            link: ["Navigate account administration in the cockpit", "https://help.sap.com/docs/btp/sap-business-technology-platform/account-administration-in-cockpit"]
+          },
+          {
+            task: "Complete the trial entitlement exercise (45 min). Identify one service entitlement and its plan/quota, then document how entitlement assignment differs from actual service consumption (75 min).",
+            link: ["Manage entitlements on SAP BTP trial", "https://developers.sap.com/tutorials/cp-trial-entitlements.html"]
+          },
+          {
+            task: "Follow the org-member tutorial and inspect roles in your Cloud Foundry org (60 min). Build a small role matrix for org and space access, without changing access you do not own (60 min).",
+            link: ["Manage Cloud Foundry org members", "https://developers.sap.com/tutorials/btp-cockpit-cf-managing-org-members.html"]
+          },
+          {
+            task: "Install or verify the Cloud Foundry CLI, find your API endpoint, log in, and confirm the targeted org and space (75 min). Capture the commands/output and give a five-minute account-model walkthrough (45 min).",
+            link: ["Install and use the Cloud Foundry CLI", "https://developers.sap.com/tutorials/cp-cf-download-cli.html"]
+          }
+        ]
+      };
+
       const pad = (value) => String(value).padStart(2, "0");
       weeks.forEach((week) => {
         const mount = document.querySelector(`[data-week-stage="${week.stage}"]`);
         if (!mount) return;
         const dayMarkup = templates[week.stage].map((template, dayIndex) => {
-          const link = dailyLinks[week.stage][dayIndex];
+          const verifiedDay = verifiedWeekPlans[week.number]?.[dayIndex];
+          const link = verifiedDay?.link || dailyLinks[week.stage][dayIndex];
+          const task = verifiedDay?.task || template.replace("{focus}", week.focus);
           return `
           <div class="day-row">
             <span class="day-label">Day ${dayIndex + 1}</span>
-            <span class="day-task">${template.replace("{focus}", week.focus)}</span>
+            <span class="day-task">${task}</span>
             <a class="day-link" href="${link[1]}" target="_blank" rel="noreferrer">${link[0]}</a>
             <label class="day-check" aria-label="Complete week ${week.number}, day ${dayIndex + 1}">
               <input type="checkbox" data-day-plan="${week.number}-${dayIndex + 1}" />
