@@ -663,6 +663,72 @@
             task: "Install or verify the Cloud Foundry CLI, find your API endpoint, log in, and confirm the targeted org and space (75 min). Capture the commands/output and give a five-minute account-model walkthrough (45 min).",
             link: ["Install and use the Cloud Foundry CLI", "https://developers.sap.com/tutorials/cp-cf-download-cli.html"]
           }
+        ],
+        3: [
+          {
+            task: "Study Cloud Foundry application structure, buildpacks, manifests, environment variables, and lifecycle operations (60 min). Inspect your Week 1 Node.js app and annotate its manifest, runtime, route, and current state (60 min).",
+            link: ["Learn Cloud Foundry application operations", "https://learning.sap.com/courses/developing-applications-for-sap-btp-cloud-foundry-runtime"]
+          },
+          {
+            task: "Follow the application-deployment tutorial and redeploy your Node.js app using an explicit manifest (60 min). Compare push, restart, and restage, then capture the resulting application settings (60 min).",
+            link: ["Deploy and manage Cloud Foundry applications", "https://developers.sap.com/tutorials/btp-cockpit-cf-deploying-applications"]
+          },
+          {
+            task: "Study Cloud Foundry routing and networking (45 min). Create or map an additional route to your app, verify both routes, then remove the temporary route and record each command (75 min).",
+            link: ["Explore routing and networking", "https://learning.sap.com/courses/developing-applications-for-sap-btp-cloud-foundry-runtime/exploring-routing-and-networking-in-sap-btp-cloud-foundry-runtime_ca484546-e9ee-4c6f-9e48-7a30da239319"]
+          },
+          {
+            task: "Scale the application to two instances and adjust its memory using the cockpit or cf CLI (45 min). Send repeated requests, inspect instance state and resource use, then restore the economical trial settings (75 min).",
+            link: ["Practice deployment and scaling controls", "https://developers.sap.com/tutorials/btp-cockpit-cf-deploying-applications"]
+          },
+          {
+            task: "Study application logs, then deliberately introduce one safe startup or configuration failure (45 min). Diagnose it with cockpit logs and cf logs, restore the app, and write a short troubleshooting runbook with evidence (75 min).",
+            link: ["Use application logs for troubleshooting", "https://help.sap.com/docs/btp/sap-business-technology-platform/using-application-logs"]
+          }
+        ],
+        4: [
+          {
+            task: "Learn the difference between services, service plans, instances, subscriptions, and service keys (60 min). Inspect the Service Marketplace and create one trial-safe service instance only if its plan has no cost (60 min).",
+            link: ["Create a service instance in SAP BTP", "https://developers.sap.com/tutorials/btp-cockpit-instances/"]
+          },
+          {
+            task: "Study service bindings and credential delivery (45 min). Bind an available service to your app, inspect VCAP_SERVICES without copying secrets, restage the app, and document the binding path (75 min).",
+            link: ["Deliver service-binding credentials", "https://developers.sap.com/tutorials/cp-cf-application-service-binding"]
+          },
+          {
+            task: "Complete the XSUAA Node.js tutorial through authentication setup (75 min). Trace browser → application router → XSUAA → backend and verify that direct unauthenticated access is rejected (45 min).",
+            link: ["Secure a Node.js app with XSUAA", "https://developers.sap.com/tutorials/cp-cf-security-xsuaa-create"]
+          },
+          {
+            task: "Continue the XSUAA tutorial for scopes, role templates, and role collections (60 min). Test one allowed and one denied operation, then create a compact authorization matrix with expected HTTP results (60 min).",
+            link: ["Implement roles and authorization checks", "https://developers.sap.com/tutorials/cp-cf-security-xsuaa-create"]
+          },
+          {
+            task: "Create a cockpit destination for the public Northwind OData service (45 min). Test the connection, explain URL/authentication/additional properties, and note how destinations avoid hard-coded endpoints (75 min).",
+            link: ["Create and test a BTP destination", "https://developers.sap.com/tutorials/cp-cf-create-destination"]
+          }
+        ],
+        5: [
+          {
+            task: "Define Project 1 as a small operational-status application: React UI, Node.js REST API, in-memory sample data, health endpoint, and Cloud Foundry manifest (30 min). Build the API and verify its endpoints locally (90 min).",
+            link: ["Use the Cloud Foundry Node.js application pattern", "https://developers.sap.com/tutorials/btp-cf-buildpacks-node-create/"]
+          },
+          {
+            task: "Build the React view against the Node.js API and add loading, empty, success, and failure states (90 min). Configure the external Northwind URL through the destination pattern instead of hard-coding it, then document the request path (30 min).",
+            link: ["Apply the SAP BTP destination pattern", "https://learning.sap.com/courses/operating-sap-business-technology-platform/using-destinations"]
+          },
+          {
+            task: "Add application-router and XSUAA configuration to Project 1 (75 min). Define Viewer and Manager permissions, assign your test user safely, and verify allowed, unauthenticated, and unauthorized paths (45 min).",
+            link: ["Add XSUAA authentication and authorization", "https://developers.sap.com/tutorials/cp-cf-security-xsuaa-create"]
+          },
+          {
+            task: "Deploy Project 1 with its manifest and required service bindings (60 min). Verify the route, environment, health endpoint, logs, restart behavior, and one recovery scenario; save a release checklist (60 min).",
+            link: ["Deploy and inspect Project 1", "https://developers.sap.com/tutorials/btp-cockpit-cf-deploying-applications"]
+          },
+          {
+            task: "Run an end-to-end acceptance pass covering UI states, API responses, authorization, destination access, and a forced failure (60 min). Finish the README, architecture diagram, setup instructions, evidence, limitations, and a five-minute recorded or live demo (60 min).",
+            link: ["Review the Cloud Foundry developer course", "https://learning.sap.com/courses/developing-applications-for-sap-btp-cloud-foundry-runtime"]
+          }
         ]
       };
 
